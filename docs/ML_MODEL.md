@@ -128,13 +128,13 @@ fun trainOffline(batch: List<StateActionReward>) {
 Models trained under intense thermal conditions on one device generalize across disparate devices effectively. 
 
 **5×5 Pairwise Action Agreement Matrix:**
-| Model | 13Perf | 13Batt | 13Cool | Neo10R | 15R Active |
+| Model | iQOO iQOO 13 Perf | iQOO iQOO 13 Batt | iQOO iQOO 13 Cool | iQOO Neo 10R | iQOO 15R Active |
 |-------|--------|--------|--------|--------|------------|
-| 13Perf | 1.00 | 0.00 | 0.00 | 0.22 | 0.56 |
-| 13Batt | 0.00 | 1.00 | 0.07 | 0.71 | 0.42 |
-| 13Cool | 0.00 | 0.07 | 1.00 | 0.07 | 0.00 |
-| Neo10R | 0.22 | 0.71 | 0.07 | 1.00 | 0.31 |
-| 15R Act | 0.56 | 0.42 | 0.00 | 0.31 | 1.00 |
+| iQOO iQOO 13 Perf | 1.00 | 0.00 | 0.00 | 0.22 | 0.56 |
+| iQOO iQOO 13 Batt | 0.00 | 1.00 | 0.07 | 0.71 | 0.42 |
+| iQOO iQOO 13 Cool | 0.00 | 0.07 | 1.00 | 0.07 | 0.00 |
+| iQOO Neo 10R | 0.22 | 0.71 | 0.07 | 1.00 | 0.31 |
+| iQOO 15R Act | 0.56 | 0.42 | 0.00 | 0.31 | 1.00 |
 
 ---
 
@@ -149,8 +149,8 @@ Models trained under intense thermal conditions on one device generalize across 
 
 | Model | MAE | RMSE | Precision | Recall | F1 Score | ROC-AUC |
 |-------|-----|------|-----------|--------|----------|---------|
-| 15R Active | 1.733 | 2.927 | 0.941 | 0.982 | 0.967 | 0.927 |
-| 13 Perf | 1.820 | 2.982 | 0.938 | 0.978 | 0.967 | 0.935 |
-| 13 Battery | 1.994 | 3.095 | 0.950 | 0.965 | 0.969 | 0.812 |
-| 13 Cool | 2.701 | 3.816 | 0.966 | 0.955 | 0.969 | 0.779 |
-| Neo10R | 1.846 | 3.071 | 0.962 | 0.988 | 0.979 | 0.946 |
+| iQOO 15R Active | 1.733 | 2.927 | 0.941 | 0.982 | 0.967 | 0.927 |
+| iQOO 13 Perf | 1.820 | 2.982 | 0.938 | 0.978 | 0.967 | 0.935 |
+| iQOO 13 Battery | 1.994 | 3.095 | 0.950 | 0.965 | 0.969 | 0.812 |
+| iQOO 13 Cool | 2.701 | 3.816 | 0.966 | 0.955 | 0.969 | 0.779 |
+| iQOO Neo 10R | 1.846 | 3.071 | 0.962 | 0.988 | 0.979 | 0.946 |

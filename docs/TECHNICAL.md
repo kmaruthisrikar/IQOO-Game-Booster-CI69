@@ -182,6 +182,35 @@ Data operates across three distinct storage tiers:
 
 ---
 
+## 12b. No-Root — Hardware APIs Only
+
+This system operates **entirely without root access**. All sensor reads, actuation, and boost signals are delivered exclusively through hardware APIs natively exposed by the Android OS and the iQOO platform layer.
+
+### Complete API Surface
+
+| API | Layer | Purpose in This App |
+| :--- | :---: | :--- |
+| `/sys/class/thermal/thermal_zone*/temp` | Android OS (sysfs) | Read chip, skin, modem, GPU, DDR temps every tick |
+| `/sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq` | Android OS (sysfs) | Compute live freqRatio state dimension |
+| `/sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq` | Android OS (sysfs) | Normalise freqRatio against hardware ceiling |
+| `/sys/class/kgsl/kgsl-3d0/gpubusy` | Android OS (sysfs) | GPU utilisation for telemetry logging |
+| `PerformanceHintManager` (ADPF) | Android OS API 34+ | Send CPU boost hints, report WorkDuration, poll thermal headroom |
+| `android.hardware.thermal.IThermal` | Android OS | Real-time thermal status callbacks and headroom polling |
+| `TrafficStats.getTotalRxBytes/TxBytes` | Android OS | Compute netMbps state dimension per tick |
+| `BatteryManager.EXTRA_CURRENT_NOW/VOLTAGE_NOW` | Android OS | Calculate system power draw (P = \|I\| × V) |
+| `DisplayManager.getDisplay(0).getRefreshRate()` | Android OS | Read current LTPO Hz for ADPF target scaling |
+| `ConnectivityManager.getActiveNetwork()` | Android OS | Detect WiFi vs 5G transport for QoS policy |
+| `AccessibilityService.onAccessibilityEvent` | Android OS | Detect foreground game window for service lifecycle |
+| `TrafficStats.setThreadStatsTag()` + socket `IP_TOS` | Android OS | Apply DSCP EF 0xB8 QoS marking to UDP packets |
+
+> [!IMPORTANT]
+> **No proprietary vivo/iQOO SDK is called.** The following APIs exist on the device but are intentionally **not used**: `vendor.vivo.hardware.vperf` (IVPerf), `vivoperfservice` (IVivoPerfManager / IVivoSymPhonyManager), `com.vivo.game.IGameManager` (Game Cube). All require a vivo-signed platform key and SDK recognition token that a normal third-party app cannot obtain.
+
+> [!NOTE]
+> **Hexagon HTP v81 NPU** (`/dev/fastrpc-cdsp`) is inaccessible — the CDSP channel is denied by the device SELinux policy for normal app domains, and this ROM has no NNAPI HAL driver (`getNumberOfDevices()=0`). This is not a limitation in practice: the Q-network is 8→128→128→15 (~100k FLOPs total) and executes in **single-digit microseconds** on the Cortex CPU.
+
+---
+
 ## 13. Safety Rails
 
 Hardcoded constraints bypassing model control to guarantee device stability:

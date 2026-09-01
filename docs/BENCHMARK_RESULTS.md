@@ -20,11 +20,11 @@ The RL agent aggressively stabilizes 1% and 0.1% lows by anticipating thermal th
 | Configuration | Mean FPS | 10% Low | 1% Low | 0.1% Low | Jitter (σ) |
 |---------------|----------|---------|--------|----------|------------|
 | Stock         | 2.83     | 1.00    | 0.116  | 0.209    | -          |
-| 15R Active    | 3.09     | 1.60    | 0.584  | 0.080    | -          |
-| 13 Perf       | 3.42     | 1.50    | 0.420  | 0.125    | -          |
-| 13 Battery    | 2.15     | 1.20    | 0.650  | 0.068    | -          |
-| 13 Cool       | 1.85     | 1.10    | 0.810  | 0.052    | -          |
-| Neo10R        | 2.95     | 1.50    | 0.610  | 0.075    | -          |
+| iQOO 15R Active    | 3.09     | 1.60    | 0.584  | 0.080    | -          |
+| iQOO 13 Perf       | 3.42     | 1.50    | 0.420  | 0.125    | -          |
+| iQOO 13 Battery    | 2.15     | 1.20    | 0.650  | 0.068    | -          |
+| iQOO 13 Cool       | 1.85     | 1.10    | 0.810  | 0.052    | -          |
+| iQOO Neo 10R        | 2.95     | 1.50    | 0.610  | 0.075    | -          |
 
 ---
 
@@ -33,11 +33,11 @@ The RL agent aggressively stabilizes 1% and 0.1% lows by anticipating thermal th
 | Configuration | Peak Chip°C | Skin Peak°C | Cool Slope | Throttle Duration | Thermal Headroom % | Target Deviation |
 |---------------|-------------|-------------|------------|-------------------|--------------------|------------------|
 | Stock         | 72.1°C      | 44.5°C      | -4.64°C/m  | 229.7s            | 12%                | +8.5°C           |
-| 15R Active    | 62.0°C      | 41.2°C      | -9.88°C/m  | 37.1s             | 45%                | +1.2°C           |
-| 13 Perf       | 68.4°C      | 42.1°C      | -8.12°C/m  | 58.4s             | 30%                | +3.4°C           |
-| 13 Battery    | 54.2°C      | 38.0°C      | -11.40°C/m | 12.0s             | 65%                | -2.0°C           |
-| 13 Cool       | 49.8°C      | 35.5°C      | -13.25°C/m | 0.0s              | 85%                | -5.0°C           |
-| Neo10R        | 59.5°C      | 40.0°C      | -10.50°C/m | 21.5s             | 50%                | +0.5°C           |
+| iQOO 15R Active    | 62.0°C      | 41.2°C      | -9.88°C/m  | 37.1s             | 45%                | +1.2°C           |
+| iQOO 13 Perf       | 68.4°C      | 42.1°C      | -8.12°C/m  | 58.4s             | 30%                | +3.4°C           |
+| iQOO 13 Battery    | 54.2°C      | 38.0°C      | -11.40°C/m | 12.0s             | 65%                | -2.0°C           |
+| iQOO 13 Cool       | 49.8°C      | 35.5°C      | -13.25°C/m | 0.0s              | 85%                | -5.0°C           |
+| iQOO Neo 10R        | 59.5°C      | 40.0°C      | -10.50°C/m | 21.5s             | 50%                | +0.5°C           |
 
 ---
 
@@ -46,11 +46,11 @@ The RL agent aggressively stabilizes 1% and 0.1% lows by anticipating thermal th
 | Configuration | Avg MHz | Throttle Duration | GPU% | ADPF Headroom | Avg Power | Peak Power | Perf/Watt |
 |---------------|---------|-------------------|------|---------------|-----------|------------|-----------|
 | Stock         | 1850    | 229.7s            | 98%  | 12%           | 1.82W     | 4.5W       | 1.55      |
-| 15R Active    | 2100    | 37.1s             | 85%  | 45%           | 2.54W     | 4.8W       | 1.21      |
-| 13 Perf       | 2400    | 58.4s             | 90%  | 30%           | 2.89W     | 5.2W       | 1.18      |
-| 13 Battery    | 1200    | 12.0s             | 60%  | 65%           | 1.45W     | 2.1W       | 1.48      |
-| 13 Cool       | 1000    | 0.0s              | 40%  | 85%           | 1.22W     | 1.8W       | 1.52      |
-| Neo10R        | 1950    | 21.5s             | 75%  | 50%           | 2.18W     | 3.8W       | 1.35      |
+| iQOO 15R Active    | 2100    | 37.1s             | 85%  | 45%           | 2.54W     | 4.8W       | 1.21      |
+| iQOO 13 Perf       | 2400    | 58.4s             | 90%  | 30%           | 2.89W     | 5.2W       | 1.18      |
+| iQOO 13 Battery    | 1200    | 12.0s             | 60%  | 65%           | 1.45W     | 2.1W       | 1.48      |
+| iQOO 13 Cool       | 1000    | 0.0s              | 40%  | 85%           | 1.22W     | 1.8W       | 1.52      |
+| iQOO Neo 10R        | 1950    | 21.5s             | 75%  | 50%           | 2.18W     | 3.8W       | 1.35      |
 
 ---
 
@@ -58,11 +58,11 @@ The RL agent aggressively stabilizes 1% and 0.1% lows by anticipating thermal th
 
 | Model | MAE | RMSE | Precision | Recall | F1 Score | ROC-AUC |
 |-------|-----|------|-----------|--------|----------|---------|
-| 15R Active | 1.733 | 2.927 | 0.941 | 0.982 | 0.967 | 0.927 |
-| 13 Perf | 1.820 | 2.982 | 0.938 | 0.978 | 0.967 | 0.935 |
-| 13 Battery | 1.994 | 3.095 | 0.950 | 0.965 | 0.969 | 0.812 |
-| 13 Cool | 2.701 | 3.816 | 0.966 | 0.955 | 0.969 | 0.779 |
-| Neo10R | 1.846 | 3.071 | 0.962 | 0.988 | 0.979 | 0.946 |
+| iQOO 15R Active | 1.733 | 2.927 | 0.941 | 0.982 | 0.967 | 0.927 |
+| iQOO 13 Perf | 1.820 | 2.982 | 0.938 | 0.978 | 0.967 | 0.935 |
+| iQOO 13 Battery | 1.994 | 3.095 | 0.950 | 0.965 | 0.969 | 0.812 |
+| iQOO 13 Cool | 2.701 | 3.816 | 0.966 | 0.955 | 0.969 | 0.779 |
+| iQOO Neo 10R | 1.846 | 3.071 | 0.962 | 0.988 | 0.979 | 0.946 |
 
 ---
 
@@ -70,13 +70,13 @@ The RL agent aggressively stabilizes 1% and 0.1% lows by anticipating thermal th
 
 This 5×5 matrix quantifies how frequently models generated on different architectures and profiles select the exact same state-action mappings in live inference.
 
-| Model | 13Perf | 13Batt | 13Cool | Neo10R | 15R Active |
+| Model | iQOO iQOO 13 Perf | iQOO iQOO 13 Batt | iQOO iQOO 13 Cool | iQOO Neo 10R | iQOO 15R Active |
 |-------|--------|--------|--------|--------|------------|
-| 13Perf | 1.00 | 0.00 | 0.00 | 0.22 | 0.56 |
-| 13Batt | 0.00 | 1.00 | 0.07 | 0.71 | 0.42 |
-| 13Cool | 0.00 | 0.07 | 1.00 | 0.07 | 0.00 |
-| Neo10R | 0.22 | 0.71 | 0.07 | 1.00 | 0.31 |
-| 15R Act | 0.56 | 0.42 | 0.00 | 0.31 | 1.00 |
+| iQOO iQOO 13 Perf | 1.00 | 0.00 | 0.00 | 0.22 | 0.56 |
+| iQOO iQOO 13 Batt | 0.00 | 1.00 | 0.07 | 0.71 | 0.42 |
+| iQOO iQOO 13 Cool | 0.00 | 0.07 | 1.00 | 0.07 | 0.00 |
+| iQOO Neo 10R | 0.22 | 0.71 | 0.07 | 1.00 | 0.31 |
+| iQOO 15R Act | 0.56 | 0.42 | 0.00 | 0.31 | 1.00 |
 
 ---
 

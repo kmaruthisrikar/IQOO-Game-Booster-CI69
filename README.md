@@ -34,30 +34,30 @@
 | Configuration | Mean FPS | 10% Low | 1% Low | 0.1% Low | Jitter (σ) |
 |---------------|----------|---------|--------|----------|------------|
 | Stock         | 2.83     | 1.00    | 0.116  | 0.209    | -          |
-| 15R Active    | 3.09     | 1.60    | 0.584  | 0.080    | -          |
-| 13 Perf       | 3.42     | 1.50    | 0.420  | 0.125    | -          |
-| 13 Battery    | 2.15     | 1.20    | 0.650  | 0.068    | -          |
-| 13 Cool       | 1.85     | 1.10    | 0.810  | 0.052    | -          |
-| Neo10R        | 2.95     | 1.50    | 0.610  | 0.075    | -          |
+| iQOO 15R Active    | 3.09     | 1.60    | 0.584  | 0.080    | -          |
+| iQOO 13 Perf       | 3.42     | 1.50    | 0.420  | 0.125    | -          |
+| iQOO 13 Battery    | 2.15     | 1.20    | 0.650  | 0.068    | -          |
+| iQOO 13 Cool       | 1.85     | 1.10    | 0.810  | 0.052    | -          |
+| iQOO Neo 10R        | 2.95     | 1.50    | 0.610  | 0.075    | -          |
 
 ### Thermal & Power Efficiency
 | Configuration | Peak Chip°C | Cool Slope | Throttle Duration | Avg Power | Perf/Watt |
 |---------------|-------------|------------|-------------------|-----------|-----------|
 | Stock         | 72.1°C      | -4.64°C/m  | 229.7s            | 1.82W     | 1.55      |
-| 15R Active    | 62.0°C      | -9.88°C/m  | 37.1s             | 2.54W     | 1.21      |
-| 13 Perf       | 68.4°C      | -8.12°C/m  | 58.4s             | 2.89W     | 1.18      |
-| 13 Battery    | 54.2°C      | -11.40°C/m | 12.0s             | 1.45W     | 1.48      |
-| 13 Cool       | 49.8°C      | -13.25°C/m | 0.0s              | 1.22W     | 1.52      |
-| Neo10R        | 59.5°C      | -10.50°C/m | 21.5s             | 2.18W     | 1.35      |
+| iQOO 15R Active    | 62.0°C      | -9.88°C/m  | 37.1s             | 2.54W     | 1.21      |
+| iQOO 13 Perf       | 68.4°C      | -8.12°C/m  | 58.4s             | 2.89W     | 1.18      |
+| iQOO 13 Battery    | 54.2°C      | -11.40°C/m | 12.0s             | 1.45W     | 1.48      |
+| iQOO 13 Cool       | 49.8°C      | -13.25°C/m | 0.0s              | 1.22W     | 1.52      |
+| iQOO Neo 10R        | 59.5°C      | -10.50°C/m | 21.5s             | 2.18W     | 1.35      |
 
 ### Neural Model Evaluation
 | Model      | MAE   | RMSE  | Throttle F1 | ROC-AUC |
 |------------|-------|-------|-------------|---------|
-| 15R Active | 1.733 | 2.927 | 0.967       | 0.927   |
-| 13 Perf    | 1.820 | 2.982 | 0.967       | 0.935   |
-| 13 Battery | 1.994 | 3.095 | 0.969       | 0.812   |
-| 13 Cool    | 2.701 | 3.816 | 0.969       | 0.779   |
-| Neo10R     | 1.846 | 3.071 | 0.979       | 0.946   |
+| iQOO 15R Active | 1.733 | 2.927 | 0.967       | 0.927   |
+| iQOO 13 Perf    | 1.820 | 2.982 | 0.967       | 0.935   |
+| iQOO 13 Battery | 1.994 | 3.095 | 0.969       | 0.812   |
+| iQOO 13 Cool    | 2.701 | 3.816 | 0.969       | 0.779   |
+| iQOO Neo 10R     | 1.846 | 3.071 | 0.979       | 0.946   |
 
 ---
 
@@ -192,6 +192,35 @@ The engine runs a custom 3-layer MLP via `KotlinMlpEngine` tailored for extreme 
 * **Parameters:** 19,603 parameters
 * **Inference Time:** ~10µs per tick on CPU
 * **File Format:** Compact custom `.bin` (~78KB)
+
+---
+
+## 🔓 No-Root — Hardware APIs Only
+
+This project operates **entirely without root access**, using only the hardware APIs natively exposed by the Android OS and the iQOO platform layer. No kernel exploits, no privileged system calls, no vendor SDK injection.
+
+### APIs Used
+
+| API | Exposed By | What It Provides |
+| :--- | :---: | :--- |
+| `/sys/class/thermal/thermal_zone*/temp` | Android OS (sysfs) | Chip, skin, modem, GPU, DDR temperatures in millidegrees |
+| `/sys/devices/system/cpu/cpu*/cpufreq/scaling_cur_freq` | Android OS (sysfs) | Real-time per-core CPU frequency |
+| `/sys/devices/system/cpu/cpu*/cpufreq/cpuinfo_max_freq` | Android OS (sysfs) | Per-core CPU max frequency ceiling |
+| `/sys/class/kgsl/kgsl-3d0/gpubusy` | Android OS (sysfs) | GPU busy ticks vs total ticks — utilization ratio |
+| `PerformanceHintManager` (ADPF) | Android OS API 34+ | CPU boost hint target, WorkDuration reporting, thermal headroom % |
+| `android.hardware.thermal.IThermal` | Android OS | Thermal headroom polling, thermal status callbacks |
+| `TrafficStats` | Android OS | Network TX/RX byte counters per UID and thread |
+| `BatteryManager` | Android OS | Battery voltage (mV), current (mA), temperature, percentage |
+| `DisplayManager` | Android OS | Current display refresh rate, supported Hz modes (LTPO) |
+| `ConnectivityManager` | Android OS | Active network transport type (WiFi vs 5G/LTE) |
+| `ActivityManager` | Android OS | Process priority, foreground app detection |
+| `AccessibilityService` | Android OS | Game window focus events, foreground package detection |
+
+> [!IMPORTANT]
+> **No proprietary iQOO/vivo SDK is used.** The vivo Multi-Turbo SDK (`vendor.vivo.hardware.vperf`, `IVivoPerfManager`) and Game Cube (`com.vivo.game.IGameManager`) are present on the device hardware but require a vivo-signed platform key and SDK recognition — this app does **not** use them. Every decision made by the RL engine is actuated purely through the standard Android OS APIs listed above.
+
+> [!NOTE]
+> The **Hexagon HTP v81 NPU** (`/dev/fastrpc-cdsp`) is intentionally not used — it is blocked by SELinux policy for normal app domains. Furthermore, the Q-network is only ~100k FLOPs, and the CPU executes a full inference pass in **microseconds** — NPU offload adds zero benefit at this scale.
 
 ---
 
