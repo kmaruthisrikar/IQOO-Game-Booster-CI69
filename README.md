@@ -273,4 +273,4 @@ This repository was created as an advanced exploration of reinforcement learning
 
 ## 📄 License
 
-MIT License. See [LICENSE](LICENSE) for details.
+Open Source.
