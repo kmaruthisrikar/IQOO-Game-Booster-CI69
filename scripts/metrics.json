@@ -1,0 +1,64 @@
+{
+  "NORMAL_FPS": {
+    "Mean": 2.829059829059829,
+    "Median": 1.8,
+    "P90 (10% Low)": 1.6,
+    "P99 (1% Low)": 1.0,
+    "P99.9 (0.1% Low)": 0.116
+  },
+  "NORMAL_FrameTime": {
+    "Mean": 560.8213675213676,
+    "Std": 117.17790837827265,
+    "IQR": 60.299999999999955,
+    "Jitter": 0.20893980715491925
+  },
+  "NORMAL_Thermal": {
+    "Peak_Chip": 72.1,
+    "Mean_Chip": 60.57435897435897,
+    "Peak_Skin": 38.6,
+    "Mean_Skin": 37.62564102564104,
+    "Modem_Mean": 52.27521367521367
+  },
+  "NORMAL_ADPF": {
+    "Mean_Hdrm": 80.97948717948714,
+    "Min_Hdrm": 80.7
+  },
+  "NORMAL_Power": {
+    "Mean_W": 1.8194968461538463,
+    "Peak_W": 8.04699,
+    "PerfPerWatt (FPS/W)": 1.5548583307742758
+  },
+  "MODEL_FPS": {
+    "Mean": 3.085663507109005,
+    "Median": 1.1,
+    "P90 (10% Low)": 0.9,
+    "P99 (1% Low)": 0.7,
+    "P99.9 (0.1% Low)": 0.5842999999999999
+  },
+  "MODEL_FrameTime": {
+    "Mean": 855.4235781990521,
+    "Std": 314.2850667468371,
+    "IQR": 206.32500000000005,
+    "Jitter": 0.3674028572003013
+  },
+  "MODEL_Thermal": {
+    "Peak_Chip": 104.7,
+    "Mean_Chip": 62.53364928909952,
+    "Peak_Skin": 40.0,
+    "Mean_Skin": 38.80355450236967,
+    "Modem_Mean": 55.57440758293839
+  },
+  "MODEL_ADPF": {
+    "Mean_Hdrm": 79.59905213270143,
+    "Min_Hdrm": 78.4
+  },
+  "MODEL_Power": {
+    "Mean_W": 2.544376485781991,
+    "Peak_W": 12.542375999999999,
+    "PerfPerWatt (FPS/W)": 1.2127385724367965
+  },
+  "Model_Eval": {
+    "Q_Spread_Mean": 1.5351040812858914,
+    "Policy_Entropy_Mean": 2.6386435048245382
+  }
+}

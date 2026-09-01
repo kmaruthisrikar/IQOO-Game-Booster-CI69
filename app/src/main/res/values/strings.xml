@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="a11y_desc">Detects when a game opens so Game Mode can start automatically. Does not read screen content.</string>
+    <string name="app_name">iQOO Game Mode</string>
+
+    <string name="notif_channel_name">Game mode controller</string>
+    <string name="notif_channel_desc">Shows the live RL governor status, temperature and action.</string>
+    <string name="action_pause">Pause</string>
+    <string name="action_resume">Resume</string>
+    <string name="action_stop">Stop</string>
+
+    <string name="toast_bench_in_progress">benchmark in progress</string>
+    <string name="toast_export_done">exported: %1$d sessions (%2$d failed)</string>
+    <string name="toast_profile_set">profile: %1$s</string>
+</resources>

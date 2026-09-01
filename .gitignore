@@ -1,0 +1,22 @@
+# Gradle build outputs
+.gradle/
+app/build/
+build/
+*.class
+
+# Android keystore (NEVER commit)
+*.jks
+*.keystore
+gradle.properties
+
+# Kotlin build caches
+.kotlin/
+
+# IDE
+.idea/
+*.iml
+local.properties
+
+# OS
+.DS_Store
+Thumbs.db

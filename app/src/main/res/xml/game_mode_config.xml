@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game-mode-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <game-mode android:name="GAME_MODE_PERFORMANCE" />
+    <game-mode android:name="GAME_MODE_BATTERY" />
+</game-mode-config>
