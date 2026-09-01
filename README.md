@@ -61,7 +61,27 @@
 
 ---
 
-## ⚙️ How It Works
+## 📈 Visual Proof Graphs
+
+All graphs generated from **962 rows of real Snapdragon 8 Elite hardware telemetry**. Committed in `benchmarks/`.
+
+### All Models — Hardware Performance Comparison
+![All Models Hardware Performance Comparison](benchmarks/all_models_hardware_performance_comparison.png)
+
+### System vs Model — ABBA Benchmark Proof
+![Benchmark Proof Dashboard](benchmarks/benchmark_proof_dashboard.png)
+
+### Neural Model Validation
+![Neural Validation Dashboard](benchmarks/neural_validation_dashboard.png)
+
+### Cross-Device Model Evaluation (iQOO 13 × 3, iQOO Neo 10R, iQOO 15R)
+![Cross Model Benchmark Proof](benchmarks/cross_model_benchmark_proof.png)
+
+> See **[docs/BENCHMARK_RESULTS.md](docs/BENCHMARK_RESULTS.md)** for full panel-by-panel breakdown of every graph.
+
+---
+
+
 
 The system operates on a 2-second closed loop, continuously sensing state, deciding an action, and applying actuators.
 

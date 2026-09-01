@@ -89,15 +89,75 @@ This 5×5 matrix quantifies how frequently models generated on different archite
 
 ---
 
-## 8. Visual Proof Images
+## 8. Visual Proof Graphs
 
-All visual telemetry graphs are available in the `benchmarks/` directory.
+All proof graphs were generated from real hardware telemetry (`telemetry/gamemode_live.csv`, 962 rows) and are committed to the repository in `benchmarks/`.
 
-- `benchmarks/fps_variance.png`: Scatter plot highlighting tight FPS clustering under RL control vs scattered Stock.
-- `benchmarks/thermal_slope.png`: Line graph of core temp over 900 seconds.
-- `benchmarks/power_draw.png`: Area chart of continuous W draw.
-- `benchmarks/action_distribution.png`: Histogram of RL actions.
-- `benchmarks/loss_curve.png`: Offline training MSE decay curve showing convergence at epoch 140.
+---
+
+### 📊 Graph 1 — All Models Hardware Performance Comparison
+
+![All Models Hardware Performance Comparison](../benchmarks/all_models_hardware_performance_comparison.png)
+
+**File:** `benchmarks/all_models_hardware_performance_comparison.png`  
+**4-Panel dark-theme dashboard comparing all 6 configurations:**
+- **Panel 1 (Top-Left):** Mean FPS, 1% Low, and 0.1% Low micro-stutter floor side-by-side for every model
+- **Panel 2 (Top-Right):** Peak chip temperature (°C) vs cool-down recovery slope (°C/min) per model
+- **Panel 3 (Bottom-Left):** CPU governor throttle duration in seconds — Stock 229.7s vs iQOO 15R Active 37.1s
+- **Panel 4 (Bottom-Right):** Average power (Watts) vs Performance-Per-Watt (FPS/W) efficiency
+
+---
+
+### 📊 Graph 2 — System vs Model Benchmark Proof Dashboard
+
+![Benchmark Proof Dashboard](../benchmarks/benchmark_proof_dashboard.png)
+
+**File:** `benchmarks/benchmark_proof_dashboard.png`  
+**4-Panel empirical ABBA benchmark proof:**
+- **Panel 1:** FPS percentile breakdown (Mean, 10% Low, 1% Low, 0.1% Low) — Stock vs iQOO 15R Active
+- **Panel 2:** Thermal trajectory slope — Stock -4.64°C/min vs Model -9.88°C/min recovery (2.1× faster)
+- **Panel 3:** CPU throttle duration comparison (229.7s stock → 37.1s model, 83.8% reduction)
+- **Panel 4:** Power envelope with duty-cycle burst pacing vs continuous stock draw
+
+---
+
+### 📊 Graph 3 — Neural Model Validation Dashboard
+
+![Neural Validation Dashboard](../benchmarks/neural_validation_dashboard.png)
+
+**File:** `benchmarks/neural_validation_dashboard.png`  
+**4-Panel DQN neural model quality evaluation:**
+- **Panel 1:** Thermal throttle ROC curve — AUC = 0.928, Precision 95.4%, Recall 98.7%, F1 = 0.970
+- **Panel 2:** Thermal prediction error distribution — MAE 2.32°C, RMSE 3.53°C, centered at 0
+- **Panel 3:** Closed-loop ramp/recovery simulation (35°C → 75°C → 40°C) — 0 oscillations, 0 deadlocks
+- **Panel 4:** Q-value confidence spread across 15 actions — ΔQ = 1.535, healthy argmax policy
+
+---
+
+### 📊 Graph 4 — Cross-Device Neural Model Evaluation
+
+![Cross Model Benchmark Proof](../benchmarks/cross_model_benchmark_proof.png)
+
+**File:** `benchmarks/cross_model_benchmark_proof.png`  
+**4-Panel cross-device model comparison (iQOO 13 × 3, iQOO Neo 10R, iQOO 15R):**
+- **Panel 1 (Top-Left):** Quality Tier selection distribution — iQOO 13 Perf pins Q3, iQOO 13 Cool pins Q0, iQOO 15R splits Q1/Q3
+- **Panel 2 (Top-Right):** Thermal throttle ROC curves overlaid — iQOO Neo 10R leads at AUC 0.946
+- **Panel 3 (Bottom-Left):** Q-value spread vs Policy Entropy per model — high spread = high decision confidence
+- **Panel 4 (Bottom-Right):** Cross-model action agreement heatmap — iQOO 15R Active vs iQOO 13 Perf: 56%, iQOO 13 Battery vs iQOO Neo 10R: 71%
+
+---
+
+### 📊 Graph 5 — Live On-Device ABBA Benchmark
+
+![Live Bench Graph](../benchmarks/bench_graph.png)
+
+**File:** `benchmarks/bench_graph.png`  
+**Raw live hardware benchmark executed directly on iQOO 15R (SM8845):**
+- Generated on-device by the built-in Benchmark tool in the app
+- Alternating NORMAL (Stock) vs MODEL (iQOO 15R Active) measurement phases
+- Verdict: **10% Low Delta +4.0% — Model WINS**, Peak chip 62°C (Model) vs 72°C (Stock)
+
+
 
 ---
 
